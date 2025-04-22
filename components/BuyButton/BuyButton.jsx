@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function BuyButton() {
+export default function BuyButton({ details }) {
   const [quantity, setQuantity] = useState(0);
 
   const increment = () => {
@@ -22,12 +22,12 @@ export default function BuyButton() {
       {quantity === 0 ? (
         <button
           onClick={() => setQuantity(1)}
-          className="bg-slate-800 hover:bg-slate-700 text-white w-full rounded-lg p-2 text-lg transition"
+          className={`${details === true ? "w-[200px]" : "w-full"} bg-slate-800 hover:bg-slate-700 text-white rounded-lg p-2 text-lg transition`}
         >
           Add To Cart
         </button>
       ) : (
-        <div className="flex items-center justify-center gap-4 bg-slate-800 hover:bg-slate-700 text-white w-full rounded-lg p-2 text-lg font-semibold">
+        <div className={`${details === true ? "w-[200px]" : "w-full"} flex items-center justify-center gap-4 bg-slate-800 hover:bg-slate-700 text-white rounded-lg p-2 text-lg font-semibold`}>
           <button onClick={decrement} className="text-lg">-</button>
           <span>{quantity}</span>
           <button onClick={increment} className="text-lg">+</button>
