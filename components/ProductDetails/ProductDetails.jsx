@@ -29,7 +29,7 @@ export default function ProductDetails({ product }) {
 
           <p className="text-gray-700 mb-6 whitespace-pre-line">{product.short_desc}</p>
 
-          <BuyButton details={true} />
+          <BuyButton productId={product.id} details={true} />
         </div>
       </div>
     </div>

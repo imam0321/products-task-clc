@@ -1,36 +1,42 @@
 "use client"
 
-import { useState } from "react";
+import { add, decrement, increment } from "@/lib/store/features/cart/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
 
-export default function BuyButton({ details }) {
-  const [quantity, setQuantity] = useState(0);
+export default function BuyButton({ productId, details }) {
+  const dispatch = useDispatch();
 
-  const increment = () => {
-    setQuantity(prev => prev + 1);
+  // Get quantity from Redux store
+  const quantity = useSelector(state =>
+    state.cart.items.find(item => item.id === productId)?.quantity || 0
+  );
+
+  const handleAddToCart = () => {
+    dispatch(add({ id: productId, quantity: 1 }));
   };
 
-  const decrement = () => {
-    if (quantity > 1) {
-      setQuantity(prev => prev - 1);
-    } else {
-      setQuantity(0);
-    }
+  const handleIncrement = () => {
+    dispatch(increment(productId));
+  };
+
+  const handleDecrement = () => {
+    dispatch(decrement(productId));
   };
 
   return (
     <>
       {quantity === 0 ? (
         <button
-          onClick={() => setQuantity(1)}
+        onClick={handleAddToCart}
           className={`${details === true ? "w-[180px]" : "w-full"} bg-slate-800 hover:bg-slate-700 text-white rounded-lg p-2 text-lg transition`}
         >
           Add To Cart
         </button>
       ) : (
         <div className={`${details === true ? "w-[180px]" : "w-full"} flex items-center justify-center gap-4 bg-slate-800 hover:bg-slate-700 text-white rounded-lg p-2 text-lg font-semibold`}>
-          <button onClick={decrement} className="text-lg">-</button>
+          <button onClick={handleDecrement} className="text-lg">-</button>
           <span>{quantity}</span>
-          <button onClick={increment} className="text-lg">+</button>
+          <button onClick={handleIncrement} className="text-lg">+</button>
         </div>
       )}
     </>

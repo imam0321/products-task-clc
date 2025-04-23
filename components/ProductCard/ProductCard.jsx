@@ -27,7 +27,7 @@ export default function ProductCard({ product }) {
           <p className="text-md font-bold text-slate-800">Tk: {discountPrice}</p>
         </div>
       </Link>
-      <BuyButton />
+      <BuyButton productId={product.id}/>
     </div>
   );
 }

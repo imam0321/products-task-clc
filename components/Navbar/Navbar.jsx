@@ -3,14 +3,15 @@ import Image from "next/image";
 import Link from "next/link";
 import CartDetails from "../CartDetails/CartDetails";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 export default function Navbar() {
   const [showCard, setShowCard] = useState(false);
+  const items = useSelector(state => state.cart.items);
 
   const handleShowCard = () => {
     setShowCard(true);
   };
-  
 
   return (
     <header>
@@ -21,7 +22,6 @@ export default function Navbar() {
             Products
           </h1>
         </Link>
-
         <ul className="flex items-center lg:pe-2">
           <li>
             <Link
@@ -36,7 +36,12 @@ export default function Navbar() {
                 alt="shopping Cart"
               />
               <span className="rounded-full absolute top-[-12px] left-[26px] bg-red-500 text-white font-semibold text-center p-[1px] w-[26px] h-[26px]">
-                0
+                {/* add total quantity */}
+                {
+                  items.length === 0
+                    ? "0"
+                    : items.reduce((total, item) => total + item.quantity, 0)
+                }
               </span>
             </Link>
           </li>
