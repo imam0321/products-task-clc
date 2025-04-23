@@ -1,3 +1,4 @@
+import Navbar from "@/components/Navbar/Navbar";
 import "./globals.css";
 
 export const metadata = {
@@ -9,7 +10,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`antialiased`}>
-        <main>{children}</main>
+        <Navbar />
+        <main className="max-w-7xl mx-auto px-4 pt-16">{children}</main>
       </body>
     </html>
   );
