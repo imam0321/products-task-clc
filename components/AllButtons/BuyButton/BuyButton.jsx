@@ -3,8 +3,9 @@
 import { add, decrement, increment } from "@/lib/store/features/cart/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-export default function BuyButton({ productId, details }) {
+export default function BuyButton({ product, details }) {
   const dispatch = useDispatch();
+  const productId = product?.id
 
   // Get quantity from Redux store
   const quantity = useSelector(state =>
@@ -12,7 +13,7 @@ export default function BuyButton({ productId, details }) {
   );
 
   const handleAddToCart = () => {
-    dispatch(add({ id: productId, quantity: 1 }));
+    dispatch(add({ id: productId, quantity: 1, product}));
   };
 
   const handleIncrement = () => {

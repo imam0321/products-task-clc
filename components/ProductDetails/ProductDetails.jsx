@@ -1,5 +1,5 @@
 import Image from "next/image";
-import BuyButton from "../BuyButton/BuyButton";
+import BuyButton from "../AllButtons/BuyButton/BuyButton";
 
 export default function ProductDetails({ product }) {
   const discountPrice = product.price - Number(product.discount_amount);
@@ -29,7 +29,7 @@ export default function ProductDetails({ product }) {
 
           <p className="text-gray-700 mb-6 whitespace-pre-line">{product.short_desc}</p>
 
-          <BuyButton productId={product.id} details={true} />
+          <BuyButton product={product} details={true} />
         </div>
       </div>
     </div>

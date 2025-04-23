@@ -1,7 +1,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import BuyButton from "../BuyButton/BuyButton";
+import BuyButton from "../AllButtons/BuyButton/BuyButton";
 
 export default function ProductCard({ product }) {
   const discountPrice = product.price - product.discount_amount;
@@ -27,7 +27,7 @@ export default function ProductCard({ product }) {
           <p className="text-md font-bold text-slate-800">Tk: {discountPrice}</p>
         </div>
       </Link>
-      <BuyButton productId={product.id}/>
+      <BuyButton product={product} />
     </div>
   );
 }

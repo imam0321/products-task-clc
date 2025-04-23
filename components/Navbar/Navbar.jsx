@@ -15,7 +15,7 @@ export default function Navbar() {
 
   return (
     <header>
-      {showCard && <CartDetails onClose={() => setShowCard(false)} />}
+      {showCard && <CartDetails items={items} onClose={() => setShowCard(false)} />}
       <nav className="fixed w-full flex items-center justify-between space-x-10 lg:py-4 py-2 px-5 bg-slate-800 z-30">
         <Link href="/">
           <h1 className="text-2xl font-semibold text-white">
