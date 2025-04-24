@@ -14,11 +14,11 @@ export async function getProducts() {
 // get product details by product id
 export async function getProductById(productId) {
   const products = await getProducts();
-  const productDetails = products.find((p) => p.id === Number(productId));
+  const productDetails = await products.find((p) => p.id === Number(productId));
   return productDetails;
 }
 
-// Post place orders 
+// Post place orders
 export async function postPlaceOrder(data) {
   try {
     const response = await fetch(

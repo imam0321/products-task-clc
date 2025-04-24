@@ -21,14 +21,11 @@ export default function ProductDetails({ product }) {
         {/* Product Info */}
         <div className="w-full md:w-1/2">
           <h1 className="text-2xl font-bold mb-2">{product.name}</h1>
-
           <div className="flex items-center gap-4 mb-4">
             <p className="text-gray-500 line-through">Tk: {product.price}</p>
             <p className="text-xl text-red-600 font-bold">Tk: {discountPrice}</p>
           </div>
-
           <p className="text-gray-700 mb-6 whitespace-pre-line">{product.short_desc}</p>
-
           <BuyButton product={product} details={true} />
         </div>
       </div>
