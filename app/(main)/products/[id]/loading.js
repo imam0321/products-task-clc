@@ -1,7 +1,9 @@
-
-
 export default function loading() {
   return (
-    <div>loading...</div>
-  )
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="text-center p-6 bg-white rounded-lg shadow-lg">
+        Loading product details...
+      </div>
+    </div>
+  );
 }

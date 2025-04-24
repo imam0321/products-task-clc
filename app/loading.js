@@ -1,7 +1,9 @@
-
-
 export default function loadingPage() {
   return (
-    <div className="text-center m-20">Products Fetch to loading...</div>
-  )
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="text-center p-6 bg-white rounded-lg shadow-lg">
+        Loading products...
+      </div>
+    </div>
+  );
 }
