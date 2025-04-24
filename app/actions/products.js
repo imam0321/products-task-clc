@@ -13,9 +13,13 @@ export async function getProducts() {
 
 // get product details by product id
 export async function getProductById(productId) {
-  const products = await getProducts();
-  const productDetails = await products.find((p) => p.id === Number(productId));
-  return productDetails;
+  try {
+    const products = await getProducts();
+    const productDetails = products.find((p) => p.id === Number(productId));
+    return productDetails;
+  } catch (error) {
+    throw new Error(error);
+  }
 }
 
 // Post place orders
