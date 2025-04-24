@@ -9,8 +9,8 @@ export default function SingleCartDetails({ product }) {
       <div className="flex items-center gap-4 w-full">
         <div className="w-16 h-16 rounded-md overflow-hidden bg-gray-100 shrink-0">
           <Image
-            src={`https://admin.refabry.com/storage/product/${product.image}`}
-            alt="imam"
+            src={`https://admin.refabry.com/storage/product/${product?.image}`}
+            alt={product?.name}
             width={64}
             height={64}
             className="object-cover"
@@ -18,10 +18,10 @@ export default function SingleCartDetails({ product }) {
         </div>
         <div className="flex-1">
           <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">
-            {product.name}
+            {product?.name}
           </h3>
           <p className="text-sm font-medium text-gray-800 dark:text-gray-300">
-            Tk: {product.currentPrice}
+            Tk: {product?.currentPrice}
           </p>
         </div>
       </div>

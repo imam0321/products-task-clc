@@ -27,7 +27,7 @@ export default function CartDetails({ onClose }) {
             products.length > 0 && <CheckoutForm products={products} />
           }
           {/* Footer Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-end">
+          <div className="flex justify-end mt-2">
             <CloseButton onClose={onClose} />
           </div>
         </div>

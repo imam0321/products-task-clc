@@ -34,10 +34,10 @@ export default function BuyButton({ product, details }) {
           Add To Cart
         </button>
       ) : (
-        <div className={`${details === true ? "w-[180px]" : "w-full"} flex items-center justify-center gap-4 bg-slate-800 hover:bg-slate-700 text-white rounded-lg p-2 text-lg font-semibold`}>
-          <button onClick={handleDecrement} className="text-lg">-</button>
+        <div className={`${details === true ? "w-[180px]" : "w-full"} flex items-center justify-between gap-4 bg-slate-800 hover:bg-slate-700 text-white rounded-lg p-2 text-lg font-semibold`}>
+          <button onClick={handleDecrement} className="text-lg ms-2">-</button>
           <span>{quantity}</span>
-          <button onClick={handleIncrement} className="text-lg">+</button>
+          <button onClick={handleIncrement} className="text-lg me-2">+</button>
         </div>
       )}
     </>

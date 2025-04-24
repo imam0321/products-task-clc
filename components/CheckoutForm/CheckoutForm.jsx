@@ -161,7 +161,7 @@ export default function CheckoutForm({ products }) {
       </div>
       <button
         type="submit"
-        className="inline-flex items-center justify-center gap-2 bg-sky-500 hover:bg-sky-600 text-white font-semibold px-5 py-2 rounded-lg transition text-center"
+        className="inline-flex items-center justify-center gap-2 bg-sky-500 hover:bg-sky-600 text-white font-semibold px-5 py-2 rounded-lg transition text-center lg:w-1/3 w-full"
       >
         <Image
           src="/checkout.svg"
