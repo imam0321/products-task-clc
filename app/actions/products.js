@@ -1,3 +1,5 @@
+"use server";
+
 // get all products
 export async function getProducts() {
   try {
