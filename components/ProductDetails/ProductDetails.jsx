@@ -2,7 +2,7 @@ import Image from "next/image";
 import BuyButton from "../AllButtons/BuyButton/BuyButton";
 
 export default function ProductDetails({ product }) {
-  const discountPrice = product.price - Number(product.discount_amount);
+  const discountPrice = product?.price - Number(product?.discount_amount);
 
   return (
     <div className="max-w-4xl mx-auto p-4">

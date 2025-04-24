@@ -3,3 +3,9 @@
 @tailwind utilities;
 
 
+.input-field {
+  @apply w-full px-4 py-2 rounded bg-[#1e2233] text-white outline-none;
+}
+label {
+  @apply text-white text-sm mb-1 block
+}

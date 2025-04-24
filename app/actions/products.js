@@ -17,3 +17,28 @@ export async function getProductById(productId) {
   const productDetails = products.find((p) => p.id === Number(productId));
   return productDetails;
 }
+
+// Post place orders 
+export async function postPlaceOrder(data) {
+  try {
+    const response = await fetch(
+      "https://admin.refabry.com/api/public/order/create",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
+    if (response.ok) {
+      const result = await response.json();
+      return result?.message || "Order placed successfully!";
+    } else {
+      const errorData = await response.json();
+      throw new Error(errorData?.message || "Failed to place order");
+    }
+  } catch (error) {
+    throw new Error(error.message || "Something went wrong");
+  }
+}

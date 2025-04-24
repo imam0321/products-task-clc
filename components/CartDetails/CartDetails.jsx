@@ -1,16 +1,11 @@
 "use client"
-import Image from "next/image";
-import Link from "next/link";
 import SingleCartDetails from "./SingleCartDetails";
 import CloseButton from "../AllButtons/CloseButton/CloseButton";
 import { useSelector } from "react-redux";
-import CheckoutButton from "../AllButtons/CheckoutButton/CheckoutButton";
+import CheckoutForm from "../CheckoutForm/CheckoutForm";
 
 export default function CartDetails({ onClose }) {
   const products = useSelector(state => state.cart.items);
-
-  // Total add to cart products price 
-  const totalPrice = products.reduce((sum, item) => sum + item.currentPrice * item.quantity, 0);
 
   return (
     <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center px-4 sm:px-6">
@@ -27,12 +22,12 @@ export default function CartDetails({ onClose }) {
                 products?.map(product => <SingleCartDetails key={product.id} product={product} />) : (<p className="text-lg text-yellow-500">No Cart Found</p>)
             }
           </div>
+          {/* Checkout Form */}
           {
-            products.length > 0 && <h2 className="text-lg text-yellow-500 text-end mt-4 me-3">Total Price: {totalPrice}</h2>
+            products.length > 0 && <CheckoutForm products={products} />
           }
           {/* Footer Buttons */}
-          <div className="mt-8 sm:mt-10 lg:mt-12 flex flex-col sm:flex-row items-stretch sm:items-center justify-end gap-3 sm:gap-4">
-            <CheckoutButton products={products}/>
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-end">
             <CloseButton onClose={onClose} />
           </div>
         </div>

@@ -2,7 +2,6 @@ import Image from "next/image";
 import BuyButton from "../AllButtons/BuyButton/BuyButton";
 
 
-
 export default function SingleCartDetails({ product }) {
 
   return (

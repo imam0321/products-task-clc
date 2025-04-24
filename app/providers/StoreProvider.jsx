@@ -1,6 +1,5 @@
 "use client"
 
-import { add } from "@/lib/store/features/cart/cartSlice"
 import { makeStore, store } from "@/lib/store/store"
 import { useRef } from "react"
 import { Provider } from "react-redux"
@@ -10,7 +9,6 @@ export default function StoreProvider({ children }) {
   
   if (!storeRef.current) {
     storeRef.current = makeStore()
-    // storeRef.current.dispatch(add(cartItems))
   }
 
   return (
