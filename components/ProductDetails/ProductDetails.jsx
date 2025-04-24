@@ -7,7 +7,6 @@ export default function ProductDetails({ product }) {
   return (
     <div className="max-w-4xl mx-auto p-4">
       <div className="flex flex-col md:flex-row items-center gap-6">
-        {/* Product Image */}
         <div className="w-full md:w-1/2">
           <Image
             src={`https://admin.refabry.com/storage/product/${product.image}`}
@@ -17,8 +16,6 @@ export default function ProductDetails({ product }) {
             className="rounded-lg object-cover"
           />
         </div>
-
-        {/* Product Info */}
         <div className="w-full md:w-1/2">
           <h1 className="text-2xl font-bold mb-2">{product.name}</h1>
           <div className="flex items-center gap-4 mb-4">
