@@ -8,7 +8,7 @@ export default function ProductCard({ product }) {
 
   return (
     <div className="border rounded-lg p-2 hover:shadow-lg transition relative">
-      <Link href={`/${product.id}`} className="block">
+      <Link href={`/products/${product.id}`} className="block">
         <div className="absolute top-3 right-3 bg-red-500 text-white font-semibold rounded-full p-2 text-center text-xs leading-tight">
           <div className="text-base">{product.discount_amount} Tk</div>
           <div className="text-[10px]">OFF</div>
