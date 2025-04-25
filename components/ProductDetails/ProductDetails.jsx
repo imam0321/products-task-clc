@@ -4,12 +4,12 @@ import BuyButton from "../AllButtons/BuyButton/BuyButton";
 export default function ProductDetails({ product }) {
 
   return (
-    <div className="my-6">
+    <div className="my-6 h-screen">
       <div className="max-w-[984px] mx-auto bg-slate-100 border shadow-lg rounded-2xl sm:grid sm:grid-cols-[2fr_1fr]">
         {/* Product Image */}
         <div className="sm:order-2">
           <Image
-            className="w-full h-full object-cover md:rounded-tl-none md:rounded-bl-none rounded-2xl"
+            className="w-full lg:h-full h-[550px] object-cover md:rounded-tl-none md:rounded-bl-none rounded-2xl"
             src={`https://admin.refabry.com/storage/product/${product?.image}`}
             alt={product?.name}
             width={800}

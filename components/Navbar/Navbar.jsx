@@ -16,7 +16,7 @@ export default function Navbar() {
   return (
     <header>
       {showCard && <CartDetails items={items} onClose={() => setShowCard(false)} />}
-      <nav className="fixed w-full flex items-center justify-between space-x-10 py-4 px-6 bg-slate-800 z-30">
+      <nav className="fixed w-full flex items-center justify-between space-x-10 lg:py-4 lg:px-6 py-5 px-8 bg-slate-800 z-30">
         <Link href="/">
           <h1 className="text-2xl font-semibold text-white">
             Products
