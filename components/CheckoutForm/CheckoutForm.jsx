@@ -19,6 +19,8 @@ export default function CheckoutForm({ products }) {
     delivery_charge: "80"
   });
 
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     // get all products id 
     const product_ids = products.map(p => p.id).join(",");
@@ -52,16 +54,19 @@ export default function CheckoutForm({ products }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const response = await postPlaceOrder(checkoutInfo);
       if (response) {
+        setLoading(false);
         dispatch(clear());
-        alert(response);
+        alert(`Order Placed: ${response}`);
       } else {
-        alert(response);
+        alert("Order failed: No response from server");
       }
     } catch (error) {
-      alert("Error placing order:", error.message)
+      alert(`Error placing order: ${error.message}`);
+      setLoading(false);
     }
   };
 
@@ -162,6 +167,7 @@ export default function CheckoutForm({ products }) {
       <button
         type="submit"
         className="inline-flex items-center justify-center gap-2 bg-sky-500 hover:bg-sky-600 text-white font-semibold px-5 py-2 rounded-lg transition text-center lg:w-1/3 w-full"
+        disabled={loading}
       >
         <Image
           src="/checkout.svg"
@@ -170,7 +176,7 @@ export default function CheckoutForm({ products }) {
           alt="checkout"
           className="invert brightness-200"
         />
-        <span>Checkout</span>
+        <span>{loading ? "Processing..." : "Checkout"}</span>
       </button>
     </form>
   );

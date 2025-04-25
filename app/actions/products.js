@@ -37,13 +37,13 @@ export async function postPlaceOrder(data) {
         body: JSON.stringify(data),
       }
     );
-    if (response.ok) {
-      const result = await response.json();
-      return result?.message || "Order placed successfully!";
-    } else {
+    if (!response.ok) {
       const errorData = await response.json();
-      throw new Error(errorData?.message || "Failed to place order");
+      throw new Error(errorData?.message || "Something went wrong");
     }
+
+    const result = await response.json();
+    return result?.message;
   } catch (error) {
     throw new Error(error.message || "Something went wrong");
   }
