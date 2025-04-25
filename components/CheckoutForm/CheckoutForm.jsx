@@ -22,6 +22,7 @@ export default function CheckoutForm({ products }) {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    if (!products || products.length === 0) return;
     // get all products id 
     const product_ids = products.map(p => p.id).join(",");
 
