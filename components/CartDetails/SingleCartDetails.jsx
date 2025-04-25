@@ -5,7 +5,7 @@ import BuyButton from "../AllButtons/BuyButton/BuyButton";
 export default function SingleCartDetails({ product }) {
 
   return (
-    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition">
+    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border border-gray-700 rounded-lg p-4 hover:shadow-md transition">
       <div className="flex items-center gap-4 w-full">
         <div className="w-16 h-16 rounded-md overflow-hidden bg-gray-100 shrink-0">
           <Image
@@ -17,10 +17,10 @@ export default function SingleCartDetails({ product }) {
           />
         </div>
         <div className="flex-1">
-          <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">
+          <h3 className="text-base sm:text-lg font-semibold text-white">
             {product?.name}
           </h3>
-          <p className="text-sm font-medium text-gray-800 dark:text-gray-300">
+          <p className="text-sm font-medium text-gray-300">
             Tk: {product?.currentPrice}
           </p>
         </div>
