@@ -6,16 +6,16 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 
 export default function Navbar() {
-  const [showCard, setShowCard] = useState(false);
+  const [showSideBar, setShowSideBar] = useState(false);
   const items = useSelector(state => state.cart.items);
-
-  const handleShowCard = () => {
-    setShowCard(true);
-  };
 
   return (
     <header>
-      {showCard && <CartDetails items={items} onClose={() => setShowCard(false)} />}
+      {showSideBar && (
+        <div className="transition-all duration-300 ease-in-out">
+          <CartDetails items={items} />
+        </div>
+      )}
       <nav className="fixed w-full flex items-center justify-between space-x-10 lg:py-4 lg:px-6 py-5 px-8 bg-slate-800 z-30">
         <Link href="/">
           <h1 className="text-2xl font-semibold text-white">
@@ -26,23 +26,27 @@ export default function Navbar() {
           <li>
             <Link
               className="bg-white hover:bg-slate-300 rounded-lg p-1 inline-block relative"
-              onClick={() => handleShowCard()}
+              onClick={() => setShowSideBar(!showSideBar)}
               href="#"
             >
-              <Image
-                src="/checkout.svg"
-                width={24}
-                height={24}
-                alt="shopping Cart"
-              />
-              <span className="rounded-full absolute top-[-12px] left-[26px] bg-red-500 text-white font-semibold text-center p-[1px] w-[26px] h-[26px]">
-                {/* add total quantity */}
-                {
-                  items.length === 0
-                    ? "0"
-                    : items.reduce((total, item) => total + item.quantity, 0)
-                }
-              </span>
+              {showSideBar === false ? (
+                <>
+                  <Image
+                    src="/checkout.svg"
+                    width={24}
+                    height={24}
+                    alt="shopping Cart"
+                  />
+                  <span className="rounded-full absolute top-[-12px] left-[26px] bg-red-500 text-white font-semibold text-center p-[1px] w-[26px] h-[26px]">
+                    {/* Add total quantity */}
+                    {items.length === 0
+                      ? "0"
+                      : items.reduce((total, item) => total + item.quantity, 0)}
+                  </span>
+                </>
+              ) : (
+                <span className="text-[20px] text-black font-semibold p-2">X</span>
+              )}
             </Link>
           </li>
         </ul>

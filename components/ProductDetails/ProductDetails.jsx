@@ -4,7 +4,7 @@ import BuyButton from "../AllButtons/BuyButton/BuyButton";
 export default function ProductDetails({ product }) {
 
   return (
-    <div className="my-6 h-screen">
+    <div className="md:my-12 my-6 h-screen">
       <div className="max-w-[984px] mx-auto bg-slate-100 border shadow-lg rounded-2xl sm:grid sm:grid-cols-[2fr_1fr]">
         {/* Product Image */}
         <div className="sm:order-2">

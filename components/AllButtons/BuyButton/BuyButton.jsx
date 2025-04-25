@@ -13,7 +13,7 @@ export default function BuyButton({ product, details }) {
   );
 
   const handleAddToCart = () => {
-    dispatch(add({ id: productId, quantity: 1, product}));
+    dispatch(add({ id: productId, quantity: 1, product }));
   };
 
   const handleIncrement = () => {
@@ -28,7 +28,7 @@ export default function BuyButton({ product, details }) {
     <>
       {quantity === 0 ? (
         <button
-        onClick={handleAddToCart}
+          onClick={handleAddToCart}
           className={`${details === true ? "w-[180px]" : "w-full"} bg-slate-800 hover:bg-slate-700 text-white rounded-lg p-2 text-lg transition`}
         >
           Add To Cart
