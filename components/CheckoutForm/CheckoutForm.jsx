@@ -22,29 +22,32 @@ export default function CheckoutForm({ products }) {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (!products || products.length === 0) return;
-    // get all products id 
-    const product_ids = products.map(p => p.id).join(",");
+    if (products && products.length > 0) {
+      // get all products id 
+      const product_ids = products.map(p => p.id).join(",");
 
-    // get all products quantity 
-    const s_product_qty = products.map(p => p.quantity).join(",");
+      // get all products quantity 
+      const s_product_qty = products.map(p => p.quantity).join(",");
 
-    // get total products quantity total price with delivery charge 
-    const deliveryCharge = parseFloat(checkoutInfo.delivery_charge || "0");
-    const cod_amount = products.reduce((sum, item) => sum + (item.currentPrice * item.quantity), deliveryCharge);
+      // get total products quantity total price with delivery charge 
+      const deliveryCharge = parseInt(checkoutInfo.delivery_charge || "0");
+      const cod_amount = products.reduce((sum, item) => sum + (item.currentPrice * item.quantity), deliveryCharge);
 
-    // get total discount price
-    const discount_amount = products.reduce((sum, item) => sum + (item.discountPrice || 0) * item.quantity, 0);
+      // get total discount price
+      const discount_amount = products.reduce((sum, item) => sum + (item.discountPrice || 0) * item.quantity, 0);
 
-    setCheckoutInfo(checkoutInfo => ({
-      ...checkoutInfo,
-      product_ids,
-      s_product_qty,
-      cod_amount,
-      discount_amount
-    }));
+      setCheckoutInfo(checkoutInfo => ({
+        ...checkoutInfo,
+        product_ids,
+        s_product_qty,
+        cod_amount,
+        discount_amount
+      }));
+    }
+
   }, [products, checkoutInfo.delivery_charge]);
 
+  // get the form value 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setCheckoutInfo(checkoutInfo => ({
@@ -53,21 +56,22 @@ export default function CheckoutForm({ products }) {
     }));
   };
 
+  // order submit handler 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     try {
       const response = await postPlaceOrder(checkoutInfo);
       if (response) {
-        setLoading(false);
         dispatch(clear());
+        setLoading(false);
         alert(`Order Placed: ${response}`);
       } else {
-        alert("Order failed: No response from server");
+        alert("Order failed: ");
       }
     } catch (error) {
-      alert(`Error placing order: ${error.message}`);
       setLoading(false);
+      alert(`Order failed: ${error.message}`);
     }
   };
 

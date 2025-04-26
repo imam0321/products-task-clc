@@ -13,9 +13,9 @@ export default function ProductCard({ product }) {
         <Image
           src={`https://admin.refabry.com/storage/product/${product?.image}`}
           alt={product?.name}
-          className="mb-4 w-full h-auto rounded-lg object-cover"
+          className="mb-4 w-full max-h-[550px] rounded-lg object-cover"
           width={200}
-          height={80}
+          height={60}
         />
         <h2 className="text-lg font-semibold mb-1">{product?.name}</h2>
         <p className="text-gray-500 text-sm">Stock: {product?.stock === 0 ? "stock out" : product?.stock}</p>

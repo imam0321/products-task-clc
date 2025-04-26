@@ -37,14 +37,14 @@ export async function postPlaceOrder(data) {
         body: JSON.stringify(data),
       }
     );
-    if (!response.ok) {
+    if (response.ok) {
+      const result = await response.json();
+      return result?.message;
+    } else {
       const errorData = await response.json();
-      throw new Error(errorData?.message || "Something went wrong");
+      throw new Error(errorData?.message);
     }
-
-    const result = await response.json();
-    return result?.message;
   } catch (error) {
-    throw new Error(error.message || "Something went wrong");
+    throw new Error(error.message);
   }
 }
