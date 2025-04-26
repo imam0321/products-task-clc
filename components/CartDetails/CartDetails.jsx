@@ -1,7 +1,10 @@
+"use client"
 import SingleCartDetails from "./SingleCartDetails";
 import CheckoutForm from "../CheckoutForm/CheckoutForm";
+import { useSelector } from "react-redux";
 
-export default function CartDetails({ items }) {
+export default function CartDetails() {
+  const products = useSelector(state => state.cart.items);
 
   return (
     <div className="md:p-8 p-5">
@@ -11,11 +14,11 @@ export default function CartDetails({ items }) {
       <div className="max-h-[400px] overflow-y-auto px-4 z-30">
         {/* Single Cart Item */}
         {
-          items?.map(product => <SingleCartDetails key={product?.id} product={product} />)
+          products?.map(product => <SingleCartDetails key={product?.id} product={product} />)
         }
         {/* Checkout Form */}
         {
-          <CheckoutForm products={items} />
+          <CheckoutForm products={products} />
         }
       </div>
     </div>

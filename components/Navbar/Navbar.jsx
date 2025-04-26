@@ -16,7 +16,7 @@ export default function Navbar() {
     <header>
       {(showSideBar && items.length > 0) && (
         <div className="fixed lg:w-[700px] w-full bg-[#12141D] shadow-2xl right-0 mt-16 pb-10 z-20 transition-all duration-300 ease-in-out">
-          <CartDetails items={items} />
+          <CartDetails />
         </div>
       )}
       <nav className="fixed w-full flex items-center justify-between gap-4 md:gap-10 py-4 px-8 bg-slate-800 z-30">
