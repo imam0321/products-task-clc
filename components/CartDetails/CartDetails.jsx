@@ -1,10 +1,7 @@
-"use client"
 import SingleCartDetails from "./SingleCartDetails";
 import CheckoutForm from "../CheckoutForm/CheckoutForm";
-import { useSelector } from "react-redux";
 
-export default function CartDetails() {
-  const products = useSelector(state => state.cart.items);
+export default function CartDetails({products}) {
 
   return (
     <div className="md:p-8 p-5">

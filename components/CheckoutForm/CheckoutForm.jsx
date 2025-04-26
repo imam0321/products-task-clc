@@ -69,6 +69,7 @@ export default function CheckoutForm({ products }) {
       } else {
         alert("Order failed: ");
       }
+      
     } catch (error) {
       setLoading(false);
       alert(`Order failed: ${error.message}`);
