@@ -7,9 +7,14 @@ export default function ProductCard({ product }) {
   return (
     <div className="border rounded-lg p-2 hover:shadow-lg transition relative">
       <Link href={`/products/${product.id}`} className="block">
-        {product?.discount_amount && <div className="absolute top-4 right-4 bg-red-500 text-white font-semibold rounded-full p-2 text-center text-xs md:text-sm">
-          <div className="text-xs md:text-sm">{product?.discount_amount} Tk OFF</div>
-        </div>}
+        {
+          product?.discount_amount &&
+          <div className="absolute top-4 right-4 bg-red-500 text-white font-semibold rounded-full p-2 text-center text-xs md:text-sm">
+            <div className="text-xs md:text-sm">
+              {product?.discount_amount} Tk OFF
+            </div>
+          </div>
+        }
         <Image
           src={`https://admin.refabry.com/storage/product/${product?.image}`}
           alt={product?.name}

@@ -9,45 +9,47 @@ export default function Navbar() {
   const [showSideBar, setShowSideBar] = useState(false);
   const items = useSelector(state => state.cart.items);
 
+  // calculate total quantity 
+  const totalQuantity = items.reduce((total, item) => total + item.quantity, 0);
+
   return (
     <header>
-      {showSideBar && (
-        <div className="transition-all duration-300 ease-in-out">
+      {(showSideBar && items.length > 0) && (
+        <div className="fixed lg:w-[700px] w-full bg-[#12141D] shadow-2xl right-0 mt-16 pb-10 z-20 transition-all duration-300 ease-in-out">
           <CartDetails items={items} />
         </div>
       )}
-      <nav className="fixed w-full flex items-center justify-between space-x-10 lg:py-4 lg:px-6 py-5 px-8 bg-slate-800 z-30">
+      <nav className="fixed w-full flex items-center justify-between gap-4 md:gap-10 py-4 px-8 bg-slate-800 z-30">
         <Link href="/">
           <h1 className="text-2xl font-semibold text-white">
             Products
           </h1>
         </Link>
-        <ul className="flex items-center lg:pe-2">
+        <ul className="flex items-center lg:pe-2 gap-2">
           <li>
-            <Link
+            <Link href='/' className="bg-white px-3 py-1 rounded-lg inline-block">Home</Link>
+          </li>
+          <li>
+            <button
               className="bg-white hover:bg-slate-300 rounded-lg p-1 inline-block relative"
-              onClick={() => setShowSideBar(!showSideBar)}
-              href="#"
+              onClick={() => items.length > 0 && setShowSideBar(!showSideBar)}
             >
-              {showSideBar === false ? (
+              {(items.length === 0 || !showSideBar) ? (
                 <>
                   <Image
                     src="/checkout.svg"
-                    width={24}
-                    height={24}
+                    width={22}
+                    height={22}
                     alt="shopping Cart"
                   />
-                  <span className="rounded-full absolute top-[-12px] left-[26px] bg-red-500 text-white font-semibold text-center p-[1px] w-[26px] h-[26px]">
-                    {/* Add total quantity */}
-                    {items.length === 0
-                      ? "0"
-                      : items.reduce((total, item) => total + item.quantity, 0)}
+                  <span className="absolute top-[-12px] left-[26px] bg-red-500 text-white font-semibold text-center rounded-full p-[1px] w-[26px] h-[26px]">
+                    {totalQuantity}
                   </span>
                 </>
               ) : (
-                <span className="text-[20px] text-black font-semibold p-2">X</span>
+                <p className="text-balance text-black font-semibold px-2">X</p>
               )}
-            </Link>
+            </button>
           </li>
         </ul>
       </nav>
