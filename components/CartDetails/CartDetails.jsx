@@ -1,3 +1,4 @@
+"use client";
 import SingleCartDetails from "./SingleCartDetails";
 import CheckoutForm from "../CheckoutForm/CheckoutForm";
 
