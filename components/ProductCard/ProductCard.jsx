@@ -26,7 +26,7 @@ export default function ProductCard({ product }) {
         <p className="text-gray-500 text-sm">Stock: {product?.stock === 0 ? "stock out" : product?.stock}</p>
         <div className="flex justify-between items-center mb-3">
           <p className="text-gray-500 text-sm line-through">Tk: {product?.price}</p>
-          <p className="text-md font-bold text-slate-800">Tk: {product?.price - product?.discount_amount}</p>
+          <p className="text-md text-red-500 font-extrabold">Tk: {product?.price - product?.discount_amount}</p>
         </div>
       </Link>
       <BuyButton product={product} />

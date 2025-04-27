@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import CartDetails from "../CartDetails/CartDetails";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 export default function Navbar() {
@@ -12,10 +12,17 @@ export default function Navbar() {
   // calculate total quantity 
   const totalQuantity = items.reduce((total, item) => total + item.quantity, 0);
 
+  // Automatically close sidebar if cart becomes empty
+  useEffect(() => {
+    if (items.length === 0) {
+      setShowSideBar(false);
+    }
+  }, [items]);
+
   return (
     <header>
       {(showSideBar && items.length > 0) && (
-        <div className="fixed lg:w-[700px] w-full bg-[#12141D] shadow-2xl right-0 mt-16 pb-10 z-20 transition-all duration-300 ease-in-out">
+        <div className={`fixed lg:w-[700px] w-full bg-[#12141D] shadow-2xl right-0 mt-16 pb-10 z-20 ease-in-out ${showSideBar && items.length > 0 ? "translate-x-0" : "translate-x-full"}`}>
           <CartDetails products={items}/>
         </div>
       )}
